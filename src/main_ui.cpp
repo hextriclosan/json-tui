@@ -266,8 +266,6 @@ Component FromArray(Component prefix,
     bool is_last_;
     int depth_;
 
-    Component tab_;
-    int tab_index_ = 0;
     bool is_expanded_ = false;
   };
   return Make<Impl>(prefix, json, is_last, depth);
@@ -295,7 +293,6 @@ Component FromTable(Component prefix,
 
       std::map<std::string, int> columns_index;
       for (auto& row : json_.items()) {
-        std::vector<Component> components_row;
         children_.push_back({});
         auto& children_row = children_.back();
         for (auto& cell : row.value().items()) {
